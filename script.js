@@ -1,69 +1,49 @@
-const word = "APPLE";
-let guessedLetters = [];
-let wrongLetters = [];
-let attempts = 6;
+function sendMessage() {
 
-function updateWordDisplay() {
-    let display = "";
+    let input = document.getElementById("user-input");
+    let message = input.value.trim();
 
-    for (let letter of word) {
-        if (guessedLetters.includes(letter)) {
-            display += letter + " ";
-        } else {
-            display += "_ ";
-        }
-    }
+    if (message === "") return;
 
-    document.getElementById("word-display").textContent = display;
+    let chatBox = document.getElementById("chat-box");
 
-    if (!display.includes("_")) {
-        document.getElementById("message").textContent =
-            "🎉 Congratulations! You Won!";
-    }
-}
+    chatBox.innerHTML += `<p><b>You:</b> ${message}</p>`;
 
-function guessLetter() {
+    let reply = getBotResponse(message);
 
-    const input = document.getElementById("letter-input");
-    const letter = input.value.toUpperCase();
-
-    if (letter === "") return;
-
-    if (word.includes(letter)) {
-
-        if (!guessedLetters.includes(letter)) {
-            guessedLetters.push(letter);
-        }
-
-    } else {
-
-        if (!wrongLetters.includes(letter)) {
-            wrongLetters.push(letter);
-            attempts--;
-        }
-    }
-
-    document.getElementById("wrong-letters").textContent =
-        wrongLetters.join(", ");
-
-    document.getElementById("attempts").textContent = attempts;
-
-    if (attempts <= 0) {
-        document.getElementById("message").textContent =
-            "💀 Game Over! Word was " + word;
-    }
-
-    updateWordDisplay();
+    chatBox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
 
     input.value = "";
+
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-updateWordDisplay();
+function getBotResponse(message) {
+
+    message = message.toLowerCase();
+
+    if (message.includes("hello") || message.includes("hi")) {
+        return "Hi! How can I help you?";
+    }
+
+    if (message.includes("how are you")) {
+        return "I am fine. Thank you!";
+    }
+
+    if (message.includes("your name")) {
+        return "I am an AI Chatbot.";
+    }
+
+    if (message.includes("bye")) {
+        return "Goodbye! Have a nice day.";
+    }
+
+    return "Sorry, I don't understand that.";
+}
 
 const darkModeBtn = document.getElementById("darkModeBtn");
 
 darkModeBtn.addEventListener("click", () => {
-
     document.body.classList.toggle("dark");
 
     if (document.body.classList.contains("dark")) {
