@@ -1,0 +1,74 @@
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:20px;
+}
+
+#darkModeBtn{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#0078ff;
+    color:white;
+    cursor:pointer;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:20px;
+}
+
+.game-section{
+    width:500px;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+#word-display{
+    font-size:40px;
+    letter-spacing:10px;
+}
+
+#letter-input{
+    width:200px;
+    padding:10px;
+    font-size:18px;
+}
+
+button{
+    padding:10px 20px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    background:#0078ff;
+    color:white;
+    cursor:pointer;
+}
+
+.banner{
+    width:300px;
+    border-radius:10px;
+}
+
+/* Dark Mode */
+
+.dark{
+    background:#121212;
+    color:white;
+}
+
+.dark .game-section{
+    background:#1e1e1e;
+}
+
+.dark input{
+    background:#333;
+    color:white;
+    border:1px solid #555;
+}
